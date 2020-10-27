@@ -1,0 +1,54 @@
+{
+  "description": "Game test",
+  "author": "Klajdi Zmalaj",
+  "build": {
+    "appId": "klajdizmalaj.com"
+  },
+  "homepage": "./",
+  "name": "k-game",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "electron-is-dev": "^1.2.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "cross-env": "^7.0.2"
+  },
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "electron-build": "electron-builder",
+    "start": "concurrently \"cross-env BROWSER=none NODE_PATH=src npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "cross-env NODE_PATH=src npm run react-build && npm run electron-build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron ."
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^9.2.1",
+    "electron-builder": "^22.8.1",
+    "concurrently": "^5.3.0",
+    "wait-on": "^5.2.0"
+  }
+}

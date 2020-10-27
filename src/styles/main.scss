@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  user-select: none;
+}
+.loaderImg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  img {
+    width: 45%;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+.gameContainer {
+  //   background-image: url("../images/bg.jpg");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 0% 0%;
+  z-index: 1;
+  //   &.start {
+  //     -webkit-animation-name: levize;
+  //     -webkit-animation-duration: 50s;
+  //     -webkit-animation-timing-function: linear;
+  //     -webkit-animation-iteration-count: infinite;
+  //   }
+}
+
+@keyframes levize {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 90% 0%;
+  }
+}
+
+.backDrop {
+  width: 100%;
+  z-index: 2;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #86868678;
+  box-shadow: inset 0 0 180px 8px black;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column;
+  > img {
+    width: 111px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -97%);
+    pointer-events: none;
+  }
+  button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0096888c;
+    text-transform: uppercase;
+    color: #000;
+    text-align: center;
+    padding: 15px 30px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    overflow: hidden;
+    border: 2px solid #00544c;
+    font-weight: 500;
+    span {
+      pointer-events: none;
+    }
+    &:after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: #00544c;
+      transition: 0.3s;
+      transform: translate(-110%) skew(10deg, 9deg);
+    }
+    &:hover {
+      color: #fff;
+      &:after {
+        transform: translate(0%) skew(0deg);
+      }
+    }
+    span {
+      position: relative;
+      z-index: 2;
+    }
+  }
+  .settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #16524dd9;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    padding: 15px 10px;
+
+    .left {
+      font-size: 13px;
+      font-weight: 300;
+      text-transform: lowercase;
+    }
+    .right {
+      i {
+        font-size: 25px;
+        cursor: pointer;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+img {
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+h1 {
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 55px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: block;
+}
+.layers {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  pointer-events: none;
+  img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    &.bushes {
+      animation: animateLeft 30s linear infinite;
+      &.b2 {
+        transform: translateX(100%);
+      }
+    }
+    &.trees {
+      animation: animateLeft 60s linear infinite;
+      &.t2 {
+        transform: translateX(100%);
+      }
+    }
+    &.street {
+      animation: animateLeft 60s linear infinite;
+      &.s2 {
+        transform: translateX(100%);
+      }
+    }
+  }
+}
+@keyframes animateLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.character {
+  display: flex;
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  img {
+    width: 96px;
+    position: relative;
+    bottom: 34px;
+  }
+}
+.character.jump {
+  animation: jump 0.5s forwards;
+}
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+
+  70% {
+    bottom: 70px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+.controls {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 60%;
+  background-color: #0c2523d2;
+  color: #fff;
+  display: flex;
+  flex-flow: column;
+  left: 20%;
+  top: 15%;
+  &--header {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #0c2523;
+    position: relative;
+    i {
+      position: absolute;
+      right: 15px;
+      cursor: pointer;
+      font-size: 25px;
+      top: 7px;
+    }
+  }
+  &--body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: inset 0 0 15px -3px black;
+    padding: 70px 20px;
+    div {
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+      text-align: center;
+      margin: 0 10px;
+      span {
+        font-size: 25px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        padding: 2px 15px;
+      }
+    }
+  }
+}
+.inGameNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: #085167;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 10px;
+  font-weight: 300;
+  .center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .right {
+    i {
+      cursor: pointer;
+    }
+  }
+  .left {
+    > div {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      i {
+        position: relative;
+        top: 1px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.devil {
+  animation: animateDevil 30s linear infinite;
+  animation-delay: 1s;
+  display: block !important;
+}
+.enemy {
+  position: absolute;
+  right: -200px;
+  bottom: 37px;
+  width: 147px;
+  display: none;
+}
+@keyframes animateDevil {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 900px;
+  }
+}
+//
