@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import GameContainer from "./components/GameContainer";
-import "./styles/main.css";
+import "./styles/main.scss";
 
 const App = () => {
   const [isLoading, load] = useState(true);
